@@ -32,7 +32,7 @@
     \setCJKmonofont[Path = fonts/]{STHeiti.ttf}
 \else\ifusesystemcjkfonts
     \setCJKmainfont[
-        BoldFont = {Songti SC},
+        BoldFont = {Songti SC Bold},
         ItalicFont = {Songti SC}
     ]{Songti SC}
     \setCJKsansfont{Songti SC}
@@ -64,7 +64,7 @@
     {0em}
     {\uppercase}
     [\vspace{-0.8em}\rule{\textwidth}{1pt}]
-\titlespacing{\section}{0pt}{0.1em}{0.1em}
+\titlespacing{\section}{0pt}{0.25em}{0.2em}
 
 % ── 列表格式 ──────────────────────────────────────────────
 \usepackage{enumitem}
@@ -88,12 +88,16 @@
 
 % ── 全局样式 ──────────────────────────────────────────────
 \color{textcolor}
-\linespread{1.15}
+\linespread{1.5}
 \pagestyle{empty}
 
 % ── 自定义命令 ────────────────────────────────────────────
 \newcommand{\daterange}[1]{{\textbf{#1}}}
 \newcommand{\entrytitle}[1]{{\textbf{#1}}}
+% 经历归属标题使用可嵌入宋体粗体并略微放大，保证跨设备显示与层级区分。
+\newcommand{\orgtitle}[1]{{\bfseries\fontsize{12pt}{14pt}\selectfont#1}}
+% 项目小标题使用轻微倾斜的宋体，和经历归属标题形成层级。
+\newcommand{\projecttitle}[1]{{\IfFontExistsTF{Songti SC}{\CJKfontspec[FakeSlant=0.15]{Songti SC}\itshape}{\itshape}#1}}
 
 % ============================================================
 \begin{document}
@@ -107,15 +111,9 @@
         {\Huge\bfseries\color{sectioncolor} 葛飞翔} \\[0.9em]
         \textbf{电话：}19857950790\hspace{1.5em}
         \textbf{邮箱：}\href{mailto:marshall_gefxiang@163.com}{marshall\_gefxiang@163.com} \\[0.45em]
-        \textbf{研究兴趣：}大模型分布式系统；深度学习算法
+        \textbf{研究兴趣：} 大模型；异构软硬件推理系统
     \end{center}
 \end{minipage}
-
-% 头像叠加在页面右上角，不影响顶部信息的居中对齐。
-\begin{tikzpicture}[remember picture, overlay]
-    \node[anchor=north east, inner sep=0pt, xshift=-1.5cm, yshift=-1.5cm]
-        at (current page.north east) {\includegraphics[width=2.8cm,height=3.3cm,keepaspectratio]{assets/profile-photo.png}};
-\end{tikzpicture}
 
 \vspace{0.3em}
 
@@ -124,125 +122,94 @@
 \vspace{-0.3em}
 
 \noindent
-\entrytitle{中国科学院大学｜推免硕士研究生}
+\entrytitle{中国科学院大学｜推免硕士研究生 | 人工智能}
 \hfill\daterange{2025.09 \textasciitilde{} 至今}
 
 \par\noindent
-\textbf{人工智能}
+$\bullet$ \textbf{荣誉经历：} 国科大杭州高等研究院新生奖学金
 
 \noindent
-\entrytitle{上海对外经贸大学｜本科}
+\entrytitle{上海对外经贸大学｜本科 | 数据科学与大数据技术}
 \hfill\daterange{2021.09 \textasciitilde{} 2025.06}
 
 \par\noindent
-\textbf{数据科学与大数据技术}
-
-\par\noindent
-$\bullet$ \textbf{学业表现：}GPA：3.74/4.00；专业排名：1/39；综测排名：2/153；CET-4：615；CET-6：554。
-
-\par\noindent
-$\bullet$ \textbf{相关课程：}算法导论（97）、人工智能（96）、深度学习（96）、数字图像处理（95）、分布式计算（95）。
-
-% ── 研究工作 ──────────────────────────────────────────────
-\section*{研究工作}
-\vspace{-0.1em}
-
-\noindent
-\entrytitle{Using Domain Adapter and Prompt Learner for Few-shot Teaching Action Recognition in videos}
-
-\par\noindent
-$\bullet$ \textbf{论文信息：}Feixiang Ge, Xinlei Li, Yan Rong, et al.，IJCNN 2025，Accepted, to be published；第一作者，CCF-C。
-
-\par\noindent
-$\bullet$ \textbf{方法贡献：}提出基于 CLIP 视觉-语言大模型的 TBA-CLIPNet，面向小样本及零样本识别；引入领域适配器弥补预训练大模型与下游任务间的语义鸿沟，构建提示模板学习器从图像特征中自动学习提示模板；设计教师目标识别算法 TD，并利用时空自注意力机制提取视频时序信息。
-
-\par\noindent
-\entrytitle{A Hybrid CNN-Transformer Network for Fine-Grained Tongue Multi-Attribute Classification with Tongue Group Attribute Mask Training in Traditional Chinese Medicine Diagnosis}
-
-\par\noindent
-$\bullet$ \textbf{论文信息：}Liu J, Ge F, Li F, et al.，International Conference on Intelligent Computing，Springer Nature Singapore，2025：467--479；共同一作，CCF-C。
-
-\par\noindent
-\entrytitle{可拓基元提取以及可拓知识论坛系统}
-\hfill\daterange{软件著作权}
-
-\par\noindent
-$\bullet$ \textbf{登记号：}2024SR0643195；第一著作权人。
+$\bullet$ \textbf{荣誉经历：} 上海市奖学金、爱建特种基金会奖学金、优秀毕业生、优秀共青团员
 
 % ── 业界工作 ──────────────────────────────────────────────
 \section*{业界工作}
 \vspace{-0.1em}
 
 \noindent
-\entrytitle{百度｜混合云模型适配组｜模型适配与推理性能优化}
-\hfill\daterange{2026.02 \textasciitilde{} 至今}
+\orgtitle{百度｜模型适配与推理性能优化 ｜ vLLM、SGLang、昆仑芯}
+\hfill\daterange{2026.02 \textasciitilde{} 2026.08}
 
 \par\noindent
-\entrytitle{DeepSeek-V3.2 单机与 PD 分离推理调优}
+$\bullet$ \projecttitle{\textbf{ LLM 推理优化：}} 1) 对于Dsv3.2模型，面向昆仑芯 P800，基于 SGLang 对 NSA Indexer、MTP/投机解码、上下文并行开展 profiling、框架对齐与关键函数优化，使单机性能较原准出提升 20\%、PD 分离提升 50\%，并定位解决投机解码乱码等一系列问题；2) 基于上游vLLM Workspace Manager机制 优化vLLM-Kunlun显存管理，使 Qwen3-97B 单机最大上下文翻倍，改动合入 \href{https://github.com/baidu/vLLM-Kunlun/pull/283/changes}{PR 283}；3) 分析算子计算强度，发现 speculative attention 的 FP16 实现较 BF16 快 1.8 倍，替换为更适配硬件的算子实现。
 
 \par\noindent
-$\bullet$ \textbf{性能优化：}面向昆仑芯 P800，基于 SGLang 与 vLLM-Kunlun 对齐算子链路，围绕 NSA Indexer、MTP/投机解码和上下文并行开展细粒度打点、框架逻辑对齐与关键函数优化；相关 NSA Indexer BF16 优化已合入。
+$\bullet$ \projecttitle{\textbf{框架迁移、开源共建与 AI 提效：}} 1）从零迁移vLLM-Omni到昆仑芯，主导多模态模型在昆仑芯的适配，主流模型的性能达到H20的80\%；2）参与 vLLM-Kunlun 开源共建，贡献者排名第 6/39、合入 9 个 PR，覆盖代码重构、算子优化与显存管理；3）迭代 LLM 部署 SOP Skill 和准出 Agent，自动化模型部署、性能/精度测试及结构化报告。
+
 
 \par\noindent
-$\bullet$ \textbf{量化结果：}单机性能较原准出版本大幅提升，在不同并发与输入长度场景均取得显著收益。PD 分离 Router 方案较上一版提升 10\%--70\%，上下文并行使短文本性能平均提升约 30\%；定位投机解码导致的乱码问题并通过关闭相关路径恢复精度。
+$\bullet$ \projecttitle{\textbf{多模型适配与交付：}}完成 Qwen3/Qwen3.5、Wan、Qwen-Image、GLM-Image、Qwen-Image-Edit 的推理适配、性能精度验证与交付，对于小模型诸如 Grounding SAM、OpenFold/SAM3、BEVFormer 等完成训练或推理场景适配，并解决过程中暴露的一系列问题。
+
 
 \par\noindent
-\entrytitle{P800 大模型适配与客户场景准出}
-
-\par\noindent
-$\bullet$ \textbf{模型适配：}完成 Qwen3/Qwen3.5 系列模型的推理适配、性能精度验证和准出文档；定位 prompt\_logprobs 算子兼容、vLLM 版本差异、prefix cache、CUDA Graph、xgrammar 与 XCCL 等问题。
-
-\par\noindent
-$\bullet$ \textbf{场景覆盖：}参与 ASR、Grounding SAM、OpenFold/SAM3、BEVFormer 等模型在 P800 上的训练或推理适配；针对长文本与超长上下文需求，推进显存管理、量化模型和推理链路优化。
-
-\par\noindent
-\entrytitle{vLLM-Omni 升级与多模态推理优化}
-
-\par\noindent
-$\bullet$ \textbf{框架升级：}重构 Kunlun Plugin 与开源 vLLM-Omni 的 patch 解耦方式，同步上游特性，输出标准镜像与 SOP；完成 Wan、Qwen-Image、GLM-Image、Qwen-Image-Edit 等多个模型的适配和初步精度/性能准出，整体调优提升 50\%--100\%+。
-
-\par\noindent
-$\bullet$ \textbf{性能结果：}Wan 系列文本到视频模型推理耗时大幅下降；GLM-Image 达到 H20 的 80\%--100\% 性能且精度符合预期，Qwen-Image-Edit 达到 H20 的 50\%。
-
-\par\noindent
-\newpage
-\entrytitle{Dynamo 分布式推理与 HiCache 性能分析}
-
-\par\noindent
-$\bullet$ \textbf{工程落地：}完成 Dynamo 源码编译与部署，搭建 SGLang + HiCache + Dynamo 环境，验证 GLM 系列模型；修复 KV-aware 模式 DP rank 不一致导致的 Hang，解决前缀复用调度失效问题：修正 SGLang KV event 发布逻辑，完善 Dynamo 侧 event key（worker\_id、DP rank）管理；完成 HiCache 端到端测试，并调研 fast tokenization。
-
-\par\noindent
-$\bullet$ \textbf{性能分析：}在 Dynamo 与 Router 两侧注入 Prometheus 指标，拆解 tokenize、transport、dispatch、route 阶段；GLM 系列测试显示 TPOT 稳定提升 10\%+，短文本 TTFT 提升 5\%--20\%，总吞吐有收益，并形成 Dynamo 方案进度与准出材料。
-
-\par\noindent
-\entrytitle{vLLM-Kunlun 开源贡献与平台提效}
-
-\par\noindent
-$\bullet$ \textbf{开源贡献：}围绕 vLLM-Kunlun Workspace Manager 与昆仑芯显存管理提交并合入 \href{https://github.com/baidu/vLLM-Kunlun/pull/283/changes}{PR 283}；协助完成量化 patch 对齐及 Triton 算子替换（\href{https://github.com/baidu/vLLM-Kunlun/pull/409}{PR 409}、\href{https://github.com/baidu/vLLM-Kunlun/pull/351}{PR 351}、\href{https://github.com/baidu/vLLM-Kunlun/pull/381}{PR 381}）。
-
-\par\noindent
-$\bullet$ \textbf{标准化与赋能：}迭代 LLM 部署 SOP Skill 与准出 Agent，自动化模型部署、性能/精度测试和结构化报告生成；编写 vLLM-Omni、DiT 优化、Dynamo 进度等技术材料，提升模型适配与交付效率。
+$\bullet$ \projecttitle{\textbf{Dynamo 与 HiCache 特性适配：}}完成 SGLang + HiCache + Dynamo 整体框架调通适配及 GLM 系列验证；修复 KV-aware 模式 DP rank 不一致 Hang 和前缀复用调度失效问题，并在 Dynamo/Router 注入 Prometheus 指标拆解链路。经分析和优化，Dynamo 可稳定提升 TPOT 10\%+，HiCache 在特定数据集使前缀命中率翻倍并显著降低 TTFT。
 
 \noindent
-\entrytitle{eBay 软件工程有限公司｜AI Platform｜机器学习工程师（Intern）}
+\orgtitle{eBay 软件工程有限公司｜AI Platform工程师 | Ray、Kubernetes、集群调度}
 \hfill\daterange{2024.10 \textasciitilde{} 2025.08}
 
 \par\noindent
-$\bullet$ \textbf{平台工程：}深入实践 Ray Data、Ray Serve 等组件，解决多类型资源标签调度和 PyArrow 内存泄漏问题；相关修复已合入公司内部 Ray 分支（\href{https://github.com/ray-project/ray/pull/49124}{PR 49124}、\href{https://github.com/ray-project/ray/pull/49756}{PR 49756}）。
-
+$\bullet$ \projecttitle{\textbf{平台工程：}}深入实践 Ray Data、Ray Serve 等组件，解决多类型资源标签调度和 PyArrow 内存泄漏问题；相关修复已合入公司内部 Ray 分支（\href{https://github.com/ray-project/ray/pull/49124}{PR 49124}、\href{https://github.com/ray-project/ray/pull/49756}{PR 49756}）。参与内部AI工作流搭建工具开发，主要负责可观测性板块和部分核心功能开发。
 \par\noindent
-$\bullet$ \textbf{推理与工作流：}修复 KubeRay 资源调度缺陷使 GPU 利用率翻倍，参与 AI 工作流框架开发，并探索 LLM 强化学习训练的资源需求、GPU 利用率与数据吞吐。
+$\bullet$ \projecttitle{\textbf{集群优化与技术跟进：}}负责测试业务部门模型的GPU集群利用情况，尽可能优化资源调度、内存管理、分布式策略等来提升GPU集群的利用率。曾修复 KubeRay 资源调度缺陷使 GPU 利用率翻倍，并探索 LLM 强化学习训练的资源需求、调研框架。
 
-% ── 荣誉情况 ──────────────────────────────────────────────
-\section*{荣誉情况}
+
+
+
+\newpage
+% ── 项目经历 ──────────────────────────────────────────────
+\section*{项目经历}
 \vspace{-0.1em}
 
 \noindent
-\begin{tabularx}{\textwidth}{@{}X X@{}}
-    $\bullet$ 2024 年度上海市奖学金 & $\bullet$ 第十四届蓝桥杯国赛三等奖（国家级） \\
-    $\bullet$ 全国大学生市场调查分析大赛三等奖（国家级） & $\bullet$ 上海对外经贸大学优秀毕业生 \\
-    $\bullet$ 美国大学生数学建模竞赛 H 奖（国际级） & $\bullet$ 2023--2024 爱建特种基金会奖学金 \\
-    $\bullet$ 国科大杭州高等研究院新生奖学金 & $\bullet$ 上海对外经贸大学优秀共青团员
-\end{tabularx}
+\orgtitle{IEEE AICAS 2026 - 面向AI芯片的VLM高效推理与优化赛道(rank 6 / 514)}
+
+\par\noindent
+$\bullet$ \projecttitle{\textbf{端到端推理加速：}}面向 PPU-ZW810E 优化 Qwen3-VL-2B-Instruct，在 VQA 单 batch、1K 输入 / 128 token 输出评测下，将 TTFT 从 vLLM 的约 77\,ms 降至约 17\,ms，吞吐从约 220 提升至约 340 tok/s；综合精度、TTFT 与吞吐指标取得赛道第 6 / 514 名。
+
+\par\noindent
+$\bullet$ \projecttitle{\textbf{全栈优化设计：}}构建图像、文本Radix Tree 等多层级KV Cache，结合 \texttt{torch.compile}、Prefill/Decode CUDA Graph 多策略录图进行推理加速；以 Triton、CUDA 和 TileLang 实现 QK RMSNorm-RoPE、FlashAttention/FlashDecode、FFN、KV 写入等关键融合算子，并通过 trace 驱动的代码优化减少 D2H 同步与小算子 launch。
+
+\noindent
+\orgtitle{基于 RISC-V AI CPU 的推理优化}
+
+\par\noindent
+$\bullet$ \projecttitle{\textbf{硬件感知 GEMM 优化：}}针对 RISC-V AI CPU 上 Qwen3.5-2B 的 GEMM，结合 Roofline 与 PMU 定位 VPU 发射吞吐和非矩阵指令瓶颈；重排为 N-major 循环、将 Q4\_1 切换至 Q4\_0、把量化 scale 分组由 32 扩至 64，精简汇编指令。在 128-token 场景下，Prefill 相比基线提升 289\%（3.89$\times$），Decode 提升 57\%（1.57$\times$）。
+
+\par\noindent
+$\bullet$ \projecttitle{\textbf{模型压缩与数据布局优化：}}将 Vision Encoder 从 24 个 ViT block 精简至 7 个，在精度损失可控前提下使 视觉 prefill 阶段吞吐翻倍； 针对 SSM \texttt{build\_conv\_state} 的非连续访存，设计 64$\times$64 分块转置与 L1 Cache 复用，实现单测 7--10$\times$、端到端约 10\% 加速。
+
+
+% ── 研究工作 ──────────────────────────────────────────────
+\section*{研究工作}
+\vspace{-0.1em}
+
+\par\noindent
+$\bullet$ \href{https://openreview.net/pdf?id=cs7cFJRYLj}{\entrytitle{Dynamical Adapter Fusion: Constructing A Global Adapter for Pre-Trained Model-based Class-Incremental Learning}}，\entrytitle{RuiQi Liu
+, Boyu Diao, Zijia An, Runjie Shao, Feixiang Ge, et al. NeurIPS 2026, CCF-A。}
+
+\noindent
+$\bullet$ \href{https://doi.org/10.1109/IJCNN64981.2025.11227768}{\entrytitle{Using Domain Adapter and Prompt Learner for Few-shot Teaching Action Recognition in videos}}，\entrytitle{Feixiang Ge, Xinlei Li, Yan Rong, et al.，IJCNN 2025；第一作者，CCF-C。}
+
+\par\noindent
+$\bullet$ \href{https://doi.org/10.1007/978-981-96-9891-2_39}{\entrytitle{A Hybrid CNN-Transformer Network for Fine-Grained Tongue Multi-Attribute Classification with Tongue Group Attribute Mask Training in Traditional Chinese Medicine Diagnosis}}，\entrytitle{Liu J, Ge F, Li F, et al.，International Conference on Intelligent Computing，Springer Nature Singapore，2025：467--479；共同一作，CCF-C。}
+
+
+\par\noindent
+$\bullet$  \entrytitle{《通用深度学习模型搭建与开发辅助工具》, 登记号：2026SR0303020；第一著作权人，软件著作权。}
+
 
 \end{document}

@@ -1,0 +1,101 @@
+% !TEX program = xelatex
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[a4paper,left=1.55cm,right=1.55cm,top=1.45cm,bottom=1.45cm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\definecolor{accent}{RGB}{46,116,181}
+\definecolor{linkcolor}{RGB}{0,112,192}
+\hypersetup{colorlinks=true, urlcolor=linkcolor}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.15}
+\pagestyle{empty}
+\setlist[itemize]{leftmargin=1.2em,nosep,topsep=0.2em,itemsep=0.28em}
+
+\titleformat{\section}{\large\bfseries\color{accent}}{}{0pt}{}[\vspace{-0.5em}\color{accent}\rule{\textwidth}{0.8pt}]
+\titlespacing{\section}{0pt}{0.55em}{0.35em}
+
+\newcommand{\dates}[1]{\hfill\textbf{#1}}
+\newcommand{\role}[1]{{\bfseries\fontsize{11pt}{13pt}\selectfont #1}}
+\newcommand{\project}[1]{{\bfseries\itshape #1}}
+
+\begin{document}
+
+\begin{center}
+    {\Huge\bfseries\color{accent} Feixiang Ge}\\[0.55em]
+    \textbf{Phone:} +86 198 5795 0790\hspace{1.5em}
+    \textbf{Email:} \href{mailto:marshall_gefxiang@163.com}{marshall\_gefxiang@163.com}\\[0.35em]
+    \textbf{Focus:} LLM Systems \textbar{} Heterogeneous AI Hardware Inference
+\end{center}
+
+\section*{Education}
+\role{University of Chinese Academy of Sciences \textbar{} M.S. Candidate in Artificial Intelligence}\dates{Sep. 2025--Present}
+\begin{itemize}
+    \item Freshman Scholarship, Hangzhou Institute for Advanced Study, UCAS.
+\end{itemize}
+
+\role{Shanghai University of International Business and Economics}\dates{Sep. 2021--Jun. 2025}
+\par\textbf{B.Eng. in Data Science and Big Data Technology}
+\begin{itemize}
+    \item Shanghai Municipal and Aijian Special Foundation Scholarships; Outstanding Graduate and Youth League Member.
+\end{itemize}
+
+\section*{Industry Experience}
+\role{Baidu \textbar{} Model Adaptation and Optimization \textbar{} vLLM, SGLang, Kunlunxin}\dates{Feb. 2026--Aug. 2026}
+\begin{itemize}
+    \item \project{LLM inference optimization:} Profiled and optimized NSA Indexer, MTP/speculative decoding, and context parallelism for DeepSeek-V3.2 on Kunlunxin P800 using SGLang. Improved single-node performance by 20\% and PD-disaggregated inference by 50\%; identified and resolved speculative-decoding corruption.
+    \item \project{Memory and operator optimization:} Reworked vLLM-Kunlun Workspace Manager memory allocation, doubling the maximum single-node context length for Qwen3-97B (\href{https://github.com/baidu/vLLM-Kunlun/pull/283/changes}{PR 283}). Used compute-intensity analysis to replace speculative-attention FP16 kernels with a hardware-suited implementation, 1.8$\times$ faster than BF16.
+    \item \project{Framework migration and open-source engineering:} Migrated vLLM-Omni to Kunlunxin from scratch and led multimodal model enablement; major models reached 80\% of H20 performance. Ranked 6th of 39 contributors to vLLM-Kunlun with 9 merged PRs spanning refactors, operators, and memory management. Iterated an LLM deployment SOP skill and release agent for automated deployment, performance/accuracy checks, and structured reports.
+    \item \project{Model delivery and distributed inference:} Delivered Qwen3/Qwen3.5, Wan, Qwen-Image, GLM-Image, and Qwen-Image-Edit; enabled smaller-model workloads including Grounding SAM, OpenFold/SAM3, and BEVFormer. Brought up SGLang + HiCache + Dynamo, fixed KV-aware DP-rank and prefix-reuse failures, and improved TPOT by 10\%+ while doubling prefix-hit rate on a target dataset.
+\end{itemize}
+
+\role{eBay \textbar{} AI Platform Engineer \textbar{} Ray, Kubernetes, Cluster Scheduling}\dates{Oct. 2024--Aug. 2025}
+\begin{itemize}
+    \item Resolved multi-resource label scheduling and PyArrow memory-leak issues in Ray Data/Serve; fixes were merged into eBay's internal Ray branch (\href{https://github.com/ray-project/ray/pull/49124}{PR 49124}, \href{https://github.com/ray-project/ray/pull/49756}{PR 49756}). Built observability and core capabilities for an internal AI-workflow platform.
+    \item Profiled production GPU-cluster utilization and optimized scheduling, memory management, and distributed strategies; fixed a KubeRay scheduling defect that doubled GPU utilization.
+\end{itemize}
+
+\section*{Selected Projects}
+\role{IEEE AICAS 2026 \textbar{} Efficient VLM Inference and Optimization for AI Chips}\dates{Rank 6 / 514}
+\begin{itemize}
+    \item \project{End-to-end VLM acceleration:} Optimized Qwen3-VL-2B-Instruct on PPU-ZW810E for single-batch VQA (1K input / 128 output tokens), reducing TTFT from about 77 ms in vLLM to about 17 ms and increasing throughput from about 220 to 340 tok/s.
+    \item \project{Full-stack optimization:} Designed multi-level image/text KV caching and applied \texttt{torch.compile} with multi-strategy Prefill/Decode CUDA Graph capture. Implemented fused kernels for QK RMSNorm-RoPE, FlashAttention/FlashDecode, FFN, and KV writes using Triton, CUDA, and TileLang; trace-driven optimization reduced D2H synchronization and small-kernel launches.
+\end{itemize}
+
+\newpage
+\role{Inference Optimization on a RISC-V AI CPU}
+\begin{itemize}
+    \item \project{Hardware-aware GEMM optimization:} Used Roofline analysis and PMU profiling to identify VPU-issue and non-matrix-instruction bottlenecks in Qwen3.5-2B. Reordered loops to N-major, switched Q4\_1 to Q4\_0, expanded quantization scale groups from 32 to 64, and simplified assembly; at 128 tokens, raised Prefill by 289\% (3.89$\times$) and Decode by 57\% (1.57$\times$) over baseline.
+    \item \project{Model compression and data-layout optimization:} Reduced the Vision Encoder from 24 to 7 ViT blocks with controlled accuracy loss, doubling vision-prefill throughput. Designed a 64$\times$64 tiled transpose with L1-cache reuse for the SSM convolution-state update, achieving 7--10$\times$ microbenchmark speedup and roughly 10\% end-to-end acceleration.
+\end{itemize}
+
+\section*{Research and Publications}
+\begin{itemize}
+    \item \href{https://openreview.net/pdf?id=cs7cFJRYLj}{\textbf{Dynamical Adapter Fusion: Constructing a Global Adapter for Pre-Trained Model-based Class-Incremental Learning.}} RuiQi Liu, Boyu Diao, Zijia An, Runjie Shao, Feixiang Ge, et al. NeurIPS 2026, CCF-A.
+    \item \href{https://doi.org/10.1109/IJCNN64981.2025.11227768}{\textbf{Using Domain Adapter and Prompt Learner for Few-shot Teaching Action Recognition in Videos.}} Feixiang Ge, Xinlei Li, Yan Rong, et al. IJCNN 2025, first author, CCF-C.
+    \item \href{https://doi.org/10.1007/978-981-96-9891-2_39}{\textbf{A Hybrid CNN-Transformer Network for Fine-Grained Tongue Multi-Attribute Classification with Tongue Group Attribute Mask Training in Traditional Chinese Medicine Diagnosis.}} Liu J., Ge F., Li F., et al. ICIC 2025, co-first author, CCF-C.
+    \item \textbf{General Deep Learning Model Development Assistant.} Software copyright No. 2026SR0303020; first holder.
+\end{itemize}
+
+\section*{Technical Expertise}
+\begin{itemize}
+    \item \project{LLM serving and distributed inference:} vLLM, SGLang, PD disaggregation, context parallelism, speculative decoding, Dynamo, and HiCache.
+    \item \project{Performance engineering:} GPU/accelerator profiling, Roofline and PMU analysis, CUDA Graphs, \texttt{torch.compile}, and memory-management optimization.
+    \item \project{Kernel and hardware optimization:} CUDA, Triton, TileLang, fused attention/FFN kernels, low-precision GEMM, and cache-aware data layouts.
+    \item \project{AI platform engineering:} Ray Data/Serve, KubeRay, Kubernetes scheduling, observability, and GPU-cluster resource optimization.
+\end{itemize}
+
+\section*{Selected Recognition}
+\begin{itemize}
+    \item IEEE AICAS 2026, Efficient VLM Inference and Optimization for AI Chips: \textbf{Rank 6 / 514}.
+    \item vLLM-Kunlun open-source contributor: \textbf{Rank 6 / 39}; \textbf{9 merged PRs} in framework, operator, and memory optimization.
+    \item Shanghai Municipal and Aijian Special Foundation Scholarships; Outstanding Graduate and Youth League Member.
+\end{itemize}
+
+\end{document}

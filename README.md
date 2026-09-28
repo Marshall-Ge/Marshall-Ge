@@ -1,1 +1,5 @@
-## [中文简历跳转](main.pdf)
+# Feixiang Ge
+
+AI Systems · Inference Optimization · AI Hardware
+
+[中文简历](resume-zh.pdf) · [English Resume](resume-en.pdf)

@@ -133,7 +133,7 @@ $\bullet$ \textbf{荣誉经历：} 国科大杭州高等研究院新生奖学金
 \hfill\daterange{2021.09 \textasciitilde{} 2025.06}
 
 \par\noindent
-$\bullet$ \textbf{荣誉经历：} 上海市奖学金、爱建特种基金会奖学金、优秀毕业生、优秀共青团员
+$\bullet$ \textbf{荣誉经历：} 上海市奖学金、爱建特种基金会奖学金、优秀毕业生、优秀共青团员、蓝桥杯国赛三等奖
 
 % ── 业界工作 ──────────────────────────────────────────────
 \section*{业界工作}
@@ -144,7 +144,7 @@ $\bullet$ \textbf{荣誉经历：} 上海市奖学金、爱建特种基金会奖
 \hfill\daterange{2026.02 \textasciitilde{} 2026.08}
 
 \par\noindent
-$\bullet$ \projecttitle{\textbf{ LLM 推理优化：}} 1) 对于Dsv3.2模型，面向昆仑芯 P800，基于 SGLang 对 NSA Indexer、MTP/投机解码、上下文并行开展 profiling、框架对齐与关键函数优化，使单机性能较原准出提升 20\%、PD 分离提升 50\%，并定位解决投机解码乱码等一系列问题；2) 基于上游vLLM Workspace Manager机制 优化vLLM-Kunlun显存管理，使 Qwen3-97B 单机最大上下文翻倍，改动合入 \href{https://github.com/baidu/vLLM-Kunlun/pull/283/changes}{PR 283}；3) 分析算子计算强度，发现 speculative attention 的 FP16 实现较 BF16 快 1.8 倍，替换为更适配硬件的算子实现。
+$\bullet$ \projecttitle{\textbf{ LLM 推理优化：}} 1) 对于Dsv3.2模型，面向昆仑芯 P800，基于 SGLang 对 NSA Indexer、MTP/投机解码开展 profiling、框架对齐与关键函数优化，先于GLM5.3 引入Index Cache机制，使单机性能较原准出提升 20\%、PD 分离提升 50\%，并定位解决投机解码乱码等一系列问题；2) 基于上游vLLM Workspace Manager机制 优化vLLM-Kunlun显存管理，使 Qwen3-97B 单机最大上下文翻倍，改动合入 \href{https://github.com/baidu/vLLM-Kunlun/pull/283/changes}{PR 283}；3) 分析算子计算强度，发现 speculative attention 的 FP16 实现较 BF16 快 1.8 倍，替换为更适配硬件的算子实现。
 
 \par\noindent
 $\bullet$ \projecttitle{\textbf{框架迁移、开源共建与 AI 提效：}} 1）从零迁移vLLM-Omni到昆仑芯，主导多模态模型在昆仑芯的适配，主流模型的性能达到H20的80\%；2）参与 vLLM-Kunlun 开源共建，贡献者排名第 6/39、合入 9 个 PR，覆盖代码重构、算子优化与显存管理；3）迭代 LLM 部署 SOP Skill 和准出 Agent，自动化模型部署、性能/精度测试及结构化报告。
